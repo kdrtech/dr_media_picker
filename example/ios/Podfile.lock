@@ -1,0 +1,28 @@
+PODS:
+  - dr_media_picker (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - dr_media_picker (from `.symlinks/plugins/dr_media_picker/ios`)
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+EXTERNAL SOURCES:
+  dr_media_picker:
+    :path: ".symlinks/plugins/dr_media_picker/ios"
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  dr_media_picker: 8d7b97759048fdcd4a7720717b89ebbdb06a3da8
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
+
+PODFILE CHECKSUM: c5ae2661fd64c5090950b5e2baf1c225a8f68795
+
+COCOAPODS: 1.15.2
