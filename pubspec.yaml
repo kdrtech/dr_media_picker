@@ -39,9 +39,9 @@ flutter:
     # then add platforms following the instruction here:
     # https://flutter.dev/to/pubspec-plugin-platforms
     # -------------------
-      # android:
-      #   package: com.morecambodia.dr_media_picker
-      #   pluginClass: DRMediaPickerPlugin
+      android:
+        package: com.morecambodia.dr_media_picker
+        pluginClass: DrMediaPickerPlugin
     # -------------------
       ios:
         pluginClass: DrMediaPickerPlugin

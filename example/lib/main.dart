@@ -4,7 +4,11 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:dr_media_picker/dr_media_picker.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DrMediaPicker.config(
+      pemissionMessage: "We need access your photo and video.",
+      pemissionTitle: "Setting");
   runApp(const MyApp());
 }
 
@@ -49,7 +53,11 @@ class _MyAppState extends State<MyApp> {
 
   void pickPhoto() async {
     final photoPath = await DrMediaPicker.pickPhoto();
-    print("Photo Path: $photoPath");
+    var path = photoPath?.path;
+    var name = photoPath?.name;
+    var extension = photoPath?.extension;
+    var mediaType = photoPath?.mediaType;
+    print("Photo Path: $path  $name  $extension $mediaType");
   }
 
   void pickVideo() async {
