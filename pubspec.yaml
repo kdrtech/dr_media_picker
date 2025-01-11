@@ -1,7 +1,7 @@
 name: dr_media_picker
-description: "A new Flutter plugin project."
-version: 0.0.1
-homepage:
+description: dr_media_picker for image picker support ios and anroid.
+version: 1.0.0
+homepage: https://github.com/kdrtech/dr_media_picker
 
 environment:
   sdk: ^3.5.3
