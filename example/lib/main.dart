@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -22,7 +25,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   final _drMediaPickerPlugin = DrMediaPicker();
-
+  String? _imageFile;
   @override
   void initState() {
     super.initState();
@@ -57,12 +60,12 @@ class _MyAppState extends State<MyApp> {
     var name = photoPath?.name;
     var extension = photoPath?.extension;
     var mediaType = photoPath?.mediaType;
-    print("Photo Path: $path  $name  $extension $mediaType");
-  }
-
-  void pickVideo() async {
-    final videoPath = await DrMediaPicker.pickVideo();
-    print("Video Path: $videoPath");
+    if (kDebugMode) {
+      print("Photo Path: $path  $name  $extension $mediaType");
+    }
+    setState(() {
+      _imageFile = path;
+    });
   }
 
   @override
@@ -70,17 +73,27 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Photo Picker'),
         ),
         body: Center(
           child: Column(children: [
             Text('Running on: $_platformVersion\n'),
-            InkWell(
-              onTap: () {
-                pickPhoto();
-              },
-              child: Text("Image"),
+            OutlinedButton(
+              onPressed: () => {pickPhoto()},
+              child: const Text("Pick Photo"),
             ),
+            Padding(
+                padding: const EdgeInsets.all(20),
+                child: _imageFile != null
+                    ? Image.file(
+                        File(_imageFile!),
+                        height: 500,
+                      )
+                    : Container(
+                        height: 500,
+                        alignment: Alignment.center,
+                        child: const Text("No image"),
+                      )),
           ]),
         ),
       ),

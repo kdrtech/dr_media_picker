@@ -107,6 +107,8 @@ NSString *btnCancel = @"Cancel";
    NSString *filePath;
    NSString *fileName;
    NSString *fileExtension;
+   NSString *mineType;
+
    NSMutableDictionary *resultData;
    if (mediaURL) {
         mediaType = @"video";
@@ -130,11 +132,28 @@ NSString *btnCancel = @"Cancel";
         filePath = imageURL.path;
         fileName = imageURL.lastPathComponent;
         fileExtension = imageURL.pathExtension;
+        NSString *mimeType = nil;
+        if (fileExtension) {
+        // Use UTType to find the MIME type
         
+        CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExtension, NULL);
+        if (uti != NULL) {
+            CFStringRef mimeTypeCF = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType);
+            if (mimeTypeCF != NULL) {
+                mimeType = (__bridge_transfer NSString *)mimeTypeCF;
+            }
+            CFRelease(uti);
+        }
+            NSLog(@"MIME Type: %@", mimeType);
+        } else {
+            NSLog(@"Could not determine file extension from URL.");
+        }
+
          NSDictionary *data  = @{
             @"path": filePath,
             @"media_type": mediaType,
             @"name": fileName,
+            @"mine_type": mimeType,
             @"extension": fileExtension
         };
         // Convert NSDictionary to Map<String, dynamic>

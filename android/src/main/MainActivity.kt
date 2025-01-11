@@ -10,8 +10,4 @@ class MainActivity : FlutterActivity() {
         //plugin = DrMediaPickerPlugin(this)
          Toast.makeText(this, "data", Toast.LENGTH_LONG).show();
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-        Toast.makeText(this, "data", Toast.LENGTH_LONG).show();
-        return super.onActivityResult(requestCode,resultCode, data);
-    }
 }

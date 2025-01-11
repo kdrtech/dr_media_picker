@@ -45,6 +45,7 @@ class DrMediaPicker {
         path: item["path"],
         name: item["name"],
         mediaType: item["media_type"],
+        mineType: item["mine_type"],
         extension: item["extension"],
       );
       return drITem;
