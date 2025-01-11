@@ -26,7 +26,7 @@ Highly video, feature-packed dr_media_picker.
 | **IOS** |
 | ![Image](https://raw.githubusercontent.com/kdrtech/dr_media_picker/master/example/assets/dummy/screen-v1.0.0-android.gif)
 | :------------: |
-| **IOS** |
+| **Andoid** |
 
 ## Current Features
 
