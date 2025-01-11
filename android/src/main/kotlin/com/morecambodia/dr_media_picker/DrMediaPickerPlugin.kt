@@ -240,58 +240,58 @@ class DrMediaPickerPlugin : FlutterPlugin,
         result.success("Android " + Build.VERSION.RELEASE + "SDK"+Build.VERSION.SDK_INT);
     }
     private fun checkAndRequestPermissions(result: MethodChannel.Result, requestType: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // SDK 33+
-            Toast.makeText(context, "Request Permission", Toast.LENGTH_LONG).show()
-            if (ContextCompat.checkSelfPermission(
-                    context!!,
-                    android.Manifest.permission.READ_MEDIA_IMAGES
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                CoroutineScope(Dispatchers.Main).launch {
-                    Toast.makeText(context, "Request image", Toast.LENGTH_LONG).show()
-                    ActivityCompat.requestPermissions(
-                        activity!!,
-                        arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES),
-                        REQUEST_PERMISSIONS
-                    )
-                    currentRequest = if (requestType == REQUEST_PICK_IMAGE) "image" else "video"
-                    pendingResult = result
-                }
-                return
-            }
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { // For older Android versions
-            if (ContextCompat.checkSelfPermission(
-                    context!!,
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    activity!!,
-                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                    REQUEST_PERMISSIONS
-                )
-                currentRequest = if (requestType == REQUEST_PICK_IMAGE) "image" else "video"
-                pendingResult = result
-                return
-            }
-        }
-
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            Toast.makeText(context, "True", Toast.LENGTH_LONG).show()
-//            if (ContextCompat.checkSelfPermission(this.context!!, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//              Toast.makeText(context, "Request Permission", Toast.LENGTH_LONG).show()
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // SDK 33+
+//            //Toast.makeText(context, "Request Permission", Toast.LENGTH_LONG).show()
+//            if (ContextCompat.checkSelfPermission(
+//                    context!!,
+//                    android.Manifest.permission.READ_MEDIA_IMAGES
+//                ) != PackageManager.PERMISSION_GRANTED
+//            ) {
 //                CoroutineScope(Dispatchers.Main).launch {
+//                    //Toast.makeText(context, "Request image", Toast.LENGTH_LONG).show()
 //                    ActivityCompat.requestPermissions(
-//                        activity!!, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+//                        activity!!,
+//                        arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES),
 //                        REQUEST_PERMISSIONS
 //                    )
 //                    currentRequest = if (requestType == REQUEST_PICK_IMAGE) "image" else "video"
 //                    pendingResult = result
-//                    return@launch
 //                }
+//                return
+//            }
+//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { // For older Android versions
+//            if (ContextCompat.checkSelfPermission(
+//                    context!!,
+//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+//                ) != PackageManager.PERMISSION_GRANTED
+//            ) {
+//                ActivityCompat.requestPermissions(
+//                    activity!!,
+//                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+//                    REQUEST_PERMISSIONS
+//                )
+//                currentRequest = if (requestType == REQUEST_PICK_IMAGE) "image" else "video"
+//                pendingResult = result
+//                return
 //            }
 //        }
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //Toast.makeText(context, "True", Toast.LENGTH_LONG).show()
+            if (ContextCompat.checkSelfPermission(this.context!!, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+              //Toast.makeText(context, "Request Permission", Toast.LENGTH_LONG).show()
+                CoroutineScope(Dispatchers.Main).launch {
+                    ActivityCompat.requestPermissions(
+                        activity!!, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                        REQUEST_PERMISSIONS
+                    )
+                    currentRequest = if (requestType == REQUEST_PICK_IMAGE) "image" else "video"
+                    pendingResult = result
+                    return@launch
+                }
+            }
+        }
         //Toast.makeText(context, "end", Toast.LENGTH_LONG).show()
         startPicker(requestType)
     }

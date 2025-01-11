@@ -16,7 +16,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  #dr_media_picker: ^1.0.0
   dr_media_picker:
     # When depending on this package from a real application you should use:
     #   dr_media_picker: ^x.y.z
