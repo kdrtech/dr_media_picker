@@ -42,7 +42,7 @@ Add the following line to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dr_media_picker: ^1.0.0
+  dr_media_picker: ^1.0.1
 ```
 ### Basic setup permission 
 
