@@ -5,3 +5,7 @@
 ## 1.0.1
 
 * Fixed missing wrong with anroid.
+
+## 1.0.2
+
+* Fixed missing wrong with anroid.
