@@ -1,6 +1,6 @@
 name: dr_media_picker
 description: dr_media_picker for image picker support ios and anroid.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/kdrtech/dr_media_picker
 
 environment:
